@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-world-production
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: hello-world
+  source:
+    path: kustomize/hello-world/overlay/production
+    repoURL: 'https://github.com/h-c-a/argocd-stub-repo'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
