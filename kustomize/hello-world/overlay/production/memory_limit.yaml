@@ -2,13 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-world
-spec:
-  template:
     spec:
-      containers:
-        - name: hello-world
-          resources:
-            limits:
-              memory: "512Mi"
-            requests:
-              memory: "128Mi"
+      template:
+        spec:
+          containers:
+            - name: hello-world
+              resources:
+                limits:
+                  cpu: "3660m"
+                  memory: "2660Mi"
+                requests:
+                  cpu: "1830m"
+                  memory: "2046Mi"
