@@ -1,3 +1,5 @@
+
+```
 # Default values for hello-world-chart
 environment: development
 
@@ -28,11 +30,11 @@ ingress:
 
 resources:
   limits:
-    cpu: 100m
-    memory: 128Mi
+    cpu: 1m
+    memory: 512Mi
   requests:
-    cpu: 100m
-    memory: 128Mi
+    cpu: 0.5m
+    memory: 512Mi
 
 autoscaling:
   enabled: false
@@ -43,3 +45,5 @@ autoscaling:
 nodeSelector: {}
 tolerations: []
 affinity: {} 
+```
+
