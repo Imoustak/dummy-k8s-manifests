@@ -3,18 +3,18 @@ environment: production
 replicaCount: 3
 
 image:
-  tag: "latest"
-  pullPolicy: Always
+    tag: "latest"
+    pullPolicy: Always
 
 resources:
-  limits:
-    cpu: 500m
-    memory: 512Mi
-  requests:
-    cpu: 200m
-    memory: 256Mi
+    limits:
+    cpu: 5625m  
+    memory: 2197Mi
+    requests:
+    cpu: 2812m
+    memory: 1690Mi
 
 autoscaling:
-  enabled: true
-  minReplicas: 3
-  maxReplicas: 6 
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 6 
