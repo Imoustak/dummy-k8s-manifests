@@ -8,13 +8,13 @@ image:
 
 resources:
   limits:
-    cpu: 500m
-    memory: 512Mi
+    cpu: 5625m  
+    memory: 2197Mi
   requests:
-    cpu: 200m
-    memory: 256Mi
+    cpu: 2812m
+    memory: 1690Mi
 
 autoscaling:
   enabled: true
   minReplicas: 3
-  maxReplicas: 6 
+  maxReplicas: 6
