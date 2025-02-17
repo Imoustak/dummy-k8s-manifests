@@ -9,6 +9,8 @@ spec:
         - name: hello-world
           resources:
             limits:
-              memory: "512Mi"
+              cpu: "3660m"
+              memory: "2660Mi"
             requests:
-              memory: "128Mi"
+              cpu: "1830m"
+              memory: "2046Mi"
