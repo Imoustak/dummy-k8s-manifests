@@ -1,20 +1,16 @@
-environment: production
-
-replicaCount: 3
-
-image:
-  tag: "latest"
-  pullPolicy: Always
-
-resources:
-  limits:
-    cpu: 500m
-    memory: 512Mi
-  requests:
-    cpu: 200m
-    memory: 256Mi
-
 autoscaling:
   enabled: true
+  maxReplicas: 6
   minReplicas: 3
-  maxReplicas: 6 
+environment: production
+image:
+  pullPolicy: Always
+  tag: latest
+replicaCount: 3
+resources:
+  limits:
+    cpu: 5091m
+    memory: 2361Mi
+  requests:
+    cpu: 2545m
+    memory: 1816Mi
