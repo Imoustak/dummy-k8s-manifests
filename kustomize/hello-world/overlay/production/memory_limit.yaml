@@ -6,9 +6,9 @@ spec:
   template:
     spec:
       containers:
-        - name: hello-world
-          resources:
-            limits:
-              memory: "512Mi"
-            requests:
-              memory: "128Mi"
+      - name: hello-world
+        resources:
+          limits:
+            memory: 3132Mi
+          requests:
+            memory: 2409Mi
