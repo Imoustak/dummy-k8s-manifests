@@ -23,7 +23,8 @@ jobs:
           REPO_NAME_GH: ${{ secrets.REPO_NAME_GH }}
           TOKEN_GH: ${{ secrets.TOKEN_GH }}
           USERNAME_GH: ${{ secrets.USERNAME_GH }}
-        run: env
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          CLUSTER_NAME: ${{ vars.AWS_REGION }}
         
         run: |
           docker run --rm --network=host \
