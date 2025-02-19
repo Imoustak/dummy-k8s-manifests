@@ -1,0 +1,43 @@
+name: Weekly Docker Container Run
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # Runs at 00:00 every Monday
+
+jobs:
+  run-docker-container:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Docker container
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AMP_WORKSPACE_ID: ${{ secrets.AMP_WORKSPACE_ID }}
+          REPO_NAME_GH: ${{ secrets.REPO_NAME_GH }}
+          TOKEN_GH: ${{ secrets.TOKEN_GH }}
+          USERNAME_GH: ${{ secrets.USERNAME_GH }}
+        
+        run: |
+          docker run -it --rm --network=host \
+          -v /var/run/docker.sock:/var/run/docker.sock \
+          -p 8080:8080 \
+          -v $(pwd)/kube:/root/.kube \
+          -v ${{ github.workspace }}:/app/manifests \
+          -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+          -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+          -e AWS_REGION=$AWS_REGION \
+          -e AMP_WORKSPACE_ID=$AMP_WORKSPACE_ID \
+          -e CLUSTER_NAME=$CLUSTER_NAME \
+          -e GITHUB_REPOSITORY_NAME=$REPO_NAME_GH \
+          -e GITHUB_USERNAME=$USERNAME_GH \
+          -e GITHUB_TOKEN=$TOKEN_GH \
+          --name bgcode k8sresourceautoresizer:latest \
+          sh -c "/app/k8s-limits --directory /app/manifests --strategy prophet --debug"
+
+            
+
+
+
