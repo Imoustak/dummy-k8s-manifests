@@ -38,7 +38,8 @@ jobs:
           -e GITHUB_REPOSITORY_NAME=$REPO_NAME_GH \
           -e GITHUB_USERNAME=$USERNAME_GH \
           -e GITHUB_TOKEN=$TOKEN_GH \
-          --name bgcode k8sresourceautoresizer:latest \
+          --name bgcode \
+          public.ecr.aws/y3y8k7w5/k8sresourceautoresizer:latest \
           sh -c "/app/k8s-limits --directory /app/manifests --strategy prophet --debug"
 
             
