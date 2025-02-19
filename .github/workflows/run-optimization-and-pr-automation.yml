@@ -30,7 +30,7 @@ jobs:
           -p 8080:8080 \
           -v $(pwd)/kube:/root/.kube \
           -v ${{ github.workspace }}:/app/manifests \
-          -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+          -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
           -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
           -e AWS_REGION=$AWS_REGION \
           -e AMP_WORKSPACE_ID=$AMP_WORKSPACE_ID \
