@@ -1,6 +1,10 @@
 name: Weekly Docker Container Run
 
 on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Manual Trigger for testing'
   schedule:
     - cron: '0 0 * * 1'  # Runs at 00:00 every Monday
 
