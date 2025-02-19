@@ -25,7 +25,7 @@ jobs:
           USERNAME_GH: ${{ secrets.USERNAME_GH }}
         
         run: |
-          docker run -it --rm --network=host \
+          docker run --rm --network=host \
           -v /var/run/docker.sock:/var/run/docker.sock \
           -p 8080:8080 \
           -v $(pwd)/kube:/root/.kube \
